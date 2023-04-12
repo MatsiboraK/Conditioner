@@ -7,10 +7,10 @@ public class ConditionerTest {
     public void shouldSetTemperature() {
         Conditioner cond = new Conditioner();
 
-        cond.currentTemperature = 15;
+        cond.setCurrentTemperature(15);
 
         int expected = 15;
-        int actual = cond.currentTemperature;
+        int actual = cond.getCurrentTemperature();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -22,8 +22,35 @@ public class ConditionerTest {
         cond.setToMaxTemp();
 
         int expected = 30;
-        int actual = cond.currentTemperature;
+        int actual = cond.getCurrentTemperature();
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldNotSetTemperatureAboveMax() {
+        Conditioner cond = new Conditioner();
+
+        cond.setCurrentTemperature(50);
+
+        int expected = 0;
+        int actual = cond.getCurrentTemperature();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldIncreaseTemperature50p() {
+        Conditioner cond = new Conditioner();
+        cond.setCurrentTemperature(25);
+
+        cond.increaseTemperature50p();
+
+        int expected = 25;
+        int actual = cond.getCurrentTemperature();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
 }
