@@ -4,6 +4,14 @@ import org.junit.jupiter.api.Test;
 public class ConditionerTest {
 
     @Test
+    public void test() {
+        Conditioner cond = new Conditioner();
+
+        Assertions.assertEquals(5, cond.getMinTemperature());
+        Assertions.assertEquals(5, cond.getMaxTemperature());
+    }
+
+    @Test
     public void shouldSetTemperature() {
         Conditioner cond = new Conditioner();
 
